@@ -7,13 +7,13 @@ namespace ltap.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class create_table_employee : IMigrationMetadata
+    public sealed partial class create_table_role : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(create_table_employee));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(create_table_role));
         
         string IMigrationMetadata.Id
         {
-            get { return "202109140640032_create_table_employee"; }
+            get { return "202110061711275_create_table_role"; }
         }
         
         string IMigrationMetadata.Source

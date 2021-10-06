@@ -126,53 +126,37 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Areas\Admins\AdminsAreaRegistration.cs" />
+    <Compile Include="Areas\Admins\Controllers\HomeAdminController.cs" />
+    <Compile Include="Areas\Employees\Controllers\HomeEmployeesController.cs" />
+    <Compile Include="Areas\Employees\EmployeesAreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ArticlesController.cs" />
     <Compile Include="Controllers\EmployeesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PersonController.cs" />
+    <Compile Include="Controllers\RolesController.cs" />
     <Compile Include="Controllers\StdNewController.cs" />
     <Compile Include="Controllers\StudentController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202109081022118_InitialCreate.cs" />
-    <Compile Include="Migrations\202109081022118_InitialCreate.designer.cs">
-      <DependentUpon>202109081022118_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202109081039063_Create_Table_SinhVien.cs" />
-    <Compile Include="Migrations\202109081039063_Create_Table_SinhVien.designer.cs">
-      <DependentUpon>202109081039063_Create_Table_SinhVien.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202109131327261_create_table_Person.cs" />
-    <Compile Include="Migrations\202109131327261_create_table_Person.Designer.cs">
-      <DependentUpon>202109131327261_create_table_Person.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202109131450137_Altr_Colums_Student.cs" />
-    <Compile Include="Migrations\202109131450137_Altr_Colums_Student.Designer.cs">
-      <DependentUpon>202109131450137_Altr_Colums_Student.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202109140640032_create_table_employee.cs" />
-    <Compile Include="Migrations\202109140640032_create_table_employee.Designer.cs">
-      <DependentUpon>202109140640032_create_table_employee.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202109201003281_create_table_employee1.cs" />
-    <Compile Include="Migrations\202109201003281_create_table_employee1.Designer.cs">
-      <DependentUpon>202109201003281_create_table_employee1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202109280722106_create_table_Article.cs" />
-    <Compile Include="Migrations\202109280722106_create_table_Article.Designer.cs">
-      <DependentUpon>202109280722106_create_table_Article.cs</DependentUpon>
+    <Compile Include="Migrations\202110061711275_create_table_role.cs" />
+    <Compile Include="Migrations\202110061711275_create_table_role.Designer.cs">
+      <DependentUpon>202110061711275_create_table_role.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\Account.cs" />
     <Compile Include="Models\AccountModel.cs" />
     <Compile Include="Models\Article.cs" />
     <Compile Include="Models\AutoGeneratekey.cs" />
     <Compile Include="Models\Employee.cs" />
+    <Compile Include="Models\Encrytion.cs" />
     <Compile Include="Models\LapTrinhQuanLyDBcontext.cs" />
     <Compile Include="Models\Person.cs" />
+    <Compile Include="Models\Role.cs" />
+    <Compile Include="Models\StringProcess.cs" />
     <Compile Include="Models\Student.cs" />
+    <Compile Include="Models\UsersRoleProvidercs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -192,6 +176,14 @@
     <Content Include="Scripts\ckeditor\ckeditor.asp" />
     <Content Include="Scripts\ckeditor\ckeditor.js" />
     <Content Include="Scripts\ckeditor\ckeditor.pack" />
+    <Content Include="Areas\Admins\Views\web.config" />
+    <Content Include="Areas\Admins\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Admins\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Admins\Views\HomeAdmin\Index.cshtml" />
+    <Content Include="Areas\Employees\Views\web.config" />
+    <Content Include="Areas\Employees\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Employees\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Employees\Views\HomeEmployees\Index.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\ckeditor\ckeditor.php" />
     <Content Include="Scripts\ckeditor\ckeditor_basic.js" />
@@ -580,10 +572,17 @@
     <Content Include="Views\Articles\Details.cshtml" />
     <Content Include="Views\Articles\Edit.cshtml" />
     <Content Include="Views\Articles\Index.cshtml" />
-    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Roles\Index.cshtml" />
+    <Content Include="Views\Roles\Details.cshtml" />
+    <Content Include="Views\Roles\Create.cshtml" />
+    <Content Include="Views\Roles\Edit.cshtml" />
+    <Content Include="Views\Roles\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Admins\Data\" />
+    <Folder Include="Areas\Admins\Views\Admin\" />
+    <Folder Include="Areas\Employees\Data\" />
     <Folder Include="Views\NewPerson\" />
   </ItemGroup>
   <ItemGroup>
@@ -600,26 +599,8 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202109081022118_InitialCreate.resx">
-      <DependentUpon>202109081022118_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202109081039063_Create_Table_SinhVien.resx">
-      <DependentUpon>202109081039063_Create_Table_SinhVien.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202109131327261_create_table_Person.resx">
-      <DependentUpon>202109131327261_create_table_Person.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202109131450137_Altr_Colums_Student.resx">
-      <DependentUpon>202109131450137_Altr_Colums_Student.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202109140640032_create_table_employee.resx">
-      <DependentUpon>202109140640032_create_table_employee.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202109201003281_create_table_employee1.resx">
-      <DependentUpon>202109201003281_create_table_employee1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202109280722106_create_table_Article.resx">
-      <DependentUpon>202109280722106_create_table_Article.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202110061711275_create_table_role.resx">
+      <DependentUpon>202110061711275_create_table_role.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

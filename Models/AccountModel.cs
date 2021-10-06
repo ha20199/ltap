@@ -9,14 +9,14 @@ namespace ltap.Models
     public class AccountModel
     {
         [Key]
-        //Validation with model
-        //UseName khong duoc de trong
-        [Required(ErrorMessage = "Usename is required.")]
-        public string Username { get; set; }
-        //Password khong duoc de trong
-        [Required(ErrorMessage = "Password is required.")]
-        //Dinh nghia DataType
-        [DataType(DataType.Password)]
-        public string Password { get; set; }
+        [Required(ErrorMessage = "use name is requeid.")]
+        public string UseName { get; set; }
+        [Required(ErrorMessage = "pass is requeid.")]
+
+        [DataType(DataType.Password)] //Dùng để biến kí tự thành "".""
+        public string PassWord { get; set; }
+
+        [StringLength(10)]
+        public string RoleID { get; set; }
     }
 }
